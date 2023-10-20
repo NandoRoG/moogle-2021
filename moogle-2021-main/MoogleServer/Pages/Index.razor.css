@@ -1,0 +1,55 @@
+.results {
+    text-align:center;
+    
+}
+
+.item .title {
+    font-size: large;
+    font-weight: bold;
+    background-color: #18191A;
+}
+    
+
+
+.item {
+    margin-right:20px;
+    margin-left:30px;
+    background-color: #0a0a0a;
+   margin-bottom: 20px;
+}
+
+
+
+.btn {
+    color: #fff;
+    background-color: darkgreen;
+    border-color: white;
+    outline:none;
+  
+}
+
+.btn:hover {
+        color: white;
+        background-color: red;
+        border-color: black;
+        cursor: pointer;
+}
+.btn:active{
+    border-block-color:red;
+   
+} 
+.p-1{
+    border-color:lime;
+}
+.p-1:active{
+    border-color:lime;
+}
+.page {
+    margin-top: -10px;
+    margin-left: -15px;
+    margin-right : -5px;
+    background-color: black;
+    border-style:groove;
+    border-color:forestgreen;
+}
+

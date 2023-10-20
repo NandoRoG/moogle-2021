@@ -1,0 +1,80 @@
+﻿@page "/"
+
+<PageTitle>Moogle!</PageTitle>
+<div class = "page">
+<div class = "header">
+    <p> </p>
+<h1>🔍 Moogle!</h1>
+</div>
+<input class="p-1 my-4" @bind="query" placeholder="Introduzca su búsqueda">
+
+@if (!Moogle.AreadyInit)
+{
+    Moogle.Initialize();
+    Moogle.AreadyInit = true;
+
+}
+
+<button type="default" class="btn btn-primary" @onclick="RunQuery">🔍 Buscar</button>
+
+@if (!string.IsNullOrEmpty(result.Suggestion)) {
+   
+    @if (result.Suggestion == " ") 
+    {
+        <div>
+            <p>¿Que quisiste decir🤷‍♂️?</p>
+        </div>
+        
+    }
+    else if (result.Suggestion == "*") 
+    {
+        <p>🤦‍♂️Por favor introduzca su busqueda, no me haga perder el tiempo😒</p>
+        
+    }
+    else if (result.Suggestion == "**") 
+    {
+        <p>🤬🤬🤬🤬</p>
+        
+    }
+    else
+    {
+      <div class="suggestion">
+        <p>¿Quisiste decir <strong><a href="#">@result.Suggestion</a></strong>?</p>
+       </div>  
+    }
+    
+    
+}
+
+
+    
+
+
+
+<ul class="results">
+    
+    @foreach (var item in result.Items()) {
+    <li>
+        <div class="item">
+            
+            <p class="title">@item.Title</p>
+            <p class="content">... @item.Snippet ...</p>
+           
+            <p>@item.Score</p>
+        </div>
+    </li>
+}
+
+</ul>
+
+@code {
+    private string query = "";
+    private SearchResult result = new SearchResult();
+    
+    private void RunQuery() {
+
+        result = Moogle.Query(query);
+    }
+}
+
+</div>    
